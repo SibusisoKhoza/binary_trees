@@ -28,7 +28,8 @@ typedef struct binary_tree_s heap_t;
 /* Function to print binary tree */
 void binary_tree_print(const binary_tree_t *);
 
-/* Function prototype for Task 0 */
+/* Function prototypes for Task 0 and Task 1 */
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
+binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
 
 #endif /* BINARY_TREES_H */
