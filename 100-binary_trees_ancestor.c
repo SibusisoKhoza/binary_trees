@@ -8,20 +8,20 @@
  */
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second)
 {
-    const binary_tree_t *ancestor;
+	const binary_tree_t *ancestor;
 
-    if (!first || !second)
-        return (NULL);
+	if (!first || !second)
+		return (NULL);
 
-    ancestor = first;
-    while (ancestor)
-    {
-        if (binary_tree_is_ancestor(ancestor, second))
-            return ((binary_tree_t *)ancestor);
-        ancestor = ancestor->parent;
-    }
+	ancestor = first;
+	while (ancestor)
+	{
+		if (binary_tree_is_ancestor(ancestor, second))
+			return ((binary_tree_t *)ancestor);
+		ancestor = ancestor->parent;
+	}
 
-    return (NULL);
+	return (NULL);
 }
 
 /**
@@ -32,16 +32,16 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
  */
 int binary_tree_is_ancestor(const binary_tree_t *ancestor, const binary_tree_t *node)
 {
-    if (!node)
-        return (0);
+	if (!node)
+		return (0);
 
-    while (node)
-    {
-        if (node == ancestor)
-            return (1);
-        node = node->parent;
-    }
+	while (node)
+	{
+		if (node == ancestor)
+			return (1);
+		node = node->parent;
+	}
 
-    return (0);
+	return (0);
 }
 
