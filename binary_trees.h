@@ -56,5 +56,9 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 int binary_tree_is_bst(const binary_tree_t *tree);
 bst_t *bst_search(const bst_t *tree, int value)
+int binary_tree_is_avl(const binary_tree_t *tree);
+size_t binary_tree_height(const binary_tree_t *tree);
+int binary_tree_balance(const binary_tree_t *tree);
+
 
 #endif /* BINARY_TREES_H */
