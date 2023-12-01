@@ -1,40 +1,43 @@
 #include "binary_trees.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * binary_tree_levelorder - Performs level-order traversal on a binary tree
+ * binary_tree_levelorder - Goes through a binary tree using level-order traversal
  * @tree: Pointer to the root node of the tree to traverse
  * @func: Pointer to a function to call for each node
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-	if (tree == NULL || func == NULL)
-		return;
+    const binary_tree_t **queue;
+    int front = 0, rear = 0;
+    int size = 0, i;
 
-	/* Create a queue to store nodes */
-	const binary_tree_t **queue = 
-		malloc(sizeof(binary_tree_t *) *binary_tree_size(tree));
-	size_t front = 0, rear = 0;
-	const binary_tree_t *current;
+    if (tree == NULL || func == NULL)
+        return;
 
-	if (queue == NULL)
-		return;
+    queue = malloc(sizeof(binary_tree_t *) * binary_tree_size(tree));
+    if (queue == NULL)
+        return;
 
-	queue[rear++] = tree;
+    queue[rear++] = tree;
 
-	while (front < rear)
-	{
-		current = queue[front++];
-		func(current->n);
+    while (front < rear)
+    {
+        size = rear - front;
 
-		/* Enqueue left child */
-		if (current->left != NULL)
-			queue[rear++] = current->left;
+        for (i = 0; i < size; i++)
+        {
+            func(queue[front]->n);
 
-		/* Enqueue right child */
-		if (current->right != NULL)
-			queue[rear++] = current->right;
-	}
+            if (queue[front]->left)
+                queue[rear++] = queue[front]->left;
 
-	free(queue);
+            if (queue[front]->right)
+                queue[rear++] = queue[front]->right;
+
+            front++;
+        }
+    }
+
+    free(queue);
 }
